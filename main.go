@@ -1,6 +1,3 @@
-/*
-
- */
 package main
 
 import (
@@ -47,7 +44,6 @@ var config configData
 var netfile string
 
 func main() {
-
 	var j bool
 
 	config.version = "0.9.1"
@@ -216,7 +212,3 @@ func updateDNSCounts(name, qtype string) {
 		atomic.AddUint64(&config.dnsUnknown, 1)
 	}
 }
-
-/*
-
- */

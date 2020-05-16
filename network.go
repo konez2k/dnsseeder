@@ -3,11 +3,12 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/btcsuite/btcd/wire"
 	"log"
 	"os"
 	"strconv"
 	"strings"
+
+	"github.com/btcsuite/btcd/wire"
 )
 
 // JNetwork is the exported struct that is read from the network file
@@ -164,7 +165,3 @@ func initNetwork(jnw JNetwork) (*dnsseeder, error) {
 
 	return seeder, nil
 }
-
-/*
-
- */

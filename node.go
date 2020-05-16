@@ -41,7 +41,3 @@ func (nd node) dns2str() string {
 		return "Unknown DNS Type"
 	}
 }
-
-/*
-
- */
