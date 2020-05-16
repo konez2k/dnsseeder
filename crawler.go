@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"net"
+	"os"
 	"strconv"
 	"time"
 
@@ -11,6 +12,7 @@ import (
 	"github.com/btcsuite/btcd/chaincfg"
 	"github.com/btcsuite/btcd/peer"
 	"github.com/btcsuite/btcd/wire"
+	"github.com/btcsuite/btclog"
 )
 
 type crawlError struct {
@@ -75,6 +77,13 @@ func crawlIP(s *dnsseeder, r *result) ([]*wire.NetAddress, *crawlError) {
 			},
 		},
 	}
+
+	if config.debug {
+		logger := btclog.NewBackend(os.Stdout).Logger(s.name)
+		logger.SetLevel(btclog.LevelDebug)
+		peer.UseLogger(logger)
+	}
+
 	p, err := peer.NewOutboundPeer(peerCfg, r.node)
 	if err != nil {
 		return nil, &crawlError{"NewOutboundPeer: error", err}
